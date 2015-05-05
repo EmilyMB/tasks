@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :lists, only: [:index]
+  resources :lists, only: [:index, :show]
 end
