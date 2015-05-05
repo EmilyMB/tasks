@@ -1,3 +1,3 @@
 Rails.application.routes.draw do
-  resources :lists, only: [:index, :show, :new, :edit, :update]
+  resources :lists
 end

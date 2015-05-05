@@ -22,6 +22,13 @@ RSpec.describe ListsController, type: :controller do
     expect(response).to render_template(:new)
   end
 
+  it "POST #create" do
+    post :create, :list => { title: "A new list" }
+
+    expect(response).to have_http_status(:redirect)
+    expect(List.count).to eq(1)
+  end
+
   it "GET #edit" do
     list = create(:list)
 
