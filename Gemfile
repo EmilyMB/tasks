@@ -7,7 +7,8 @@ gem "uglifier", ">= 1.3.0"
 gem "jquery-rails"
 gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
-
+gem "twitter-bootstrap-rails"
+gem "bootstrap-sass"
 
 group :development, :test do
   gem "pry"
@@ -20,4 +21,5 @@ end
 group :test do
   gem "factory_girl_rails", "~> 4.0"
   gem "simplecov", :require => false
+  gem "capybara"
 end
