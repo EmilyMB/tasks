@@ -1,13 +1,16 @@
 <h3><%= @list.title %></h3>
+<p><input type="text" id="title-box" value=""></p>
 <table class="table table-resposive table-striped">
-  <th>
-    <td><%= sortable "title", "Task" %></td>
-    <td>Description</td>
-    <td><%= sortable "due_date", "Due Date" %></td>
-    <td><%= sortable "complete", "Completed?" %></td>
-    <td>Mark Complete</td>
-    <td>Update</td>
-  </th>
+  <thead>
+    <tr class="head">
+      <td><%= sortable "title", "Task" %></td>
+      <td>Description</td>
+      <td><%= sortable "due_date", "Due Date" %></td>
+      <td><%= sortable "complete", "Completed?" %></td>
+      <td>Mark Complete</td>
+      <td>Update</td>
+    </tr>
+  </thead>
   <% @tasks.each do |task| %>
   <tr id="<%= task.id %>">
     <td></td>

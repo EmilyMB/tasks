@@ -14,4 +14,18 @@ $(document).ready(function() {
       }
     });
   });
+
+  $('#title-box').keyup(function(){
+    var valThis = $(this).val().toLowerCase();
+
+    if(valThis == ""){
+      $('table > tr').show();
+    } else {
+      $('tr').each(function(){
+        console.log($(this).text());
+        var text = $(this).text().toLowerCase();
+          $(this).attr('class') == 'head' || (text.indexOf(valThis) >= 0) ? $(this).show() : $(this).hide();
+     });
+   };
+});
 });
