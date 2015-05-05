@@ -14,4 +14,10 @@ RSpec.describe ListsController, type: :controller do
 
     expect(response).to have_http_status(:success)
   end
+
+  it "GET #new" do
+    get :new
+
+    expect(response).to have_http_status(:success)
+  end
 end
