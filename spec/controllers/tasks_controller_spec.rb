@@ -9,7 +9,8 @@ RSpec.describe TasksController, type: :controller do
   end
 
   it "POST #create" do
-    post :create, task: { title: "A new task" }
+    list = create(:list)
+    post :create, task: { title: "A new task", list_id: list.id}
 
     expect(response).to have_http_status(:redirect)
     expect(Task.count).to eq(1)
@@ -29,7 +30,7 @@ RSpec.describe TasksController, type: :controller do
     put :update, id: task.id, task: { title: "New Title", complete: true }
 
     expect(response).to have_http_status(:redirect)
-    expect(response).to redirect_to(assigns(:task))
+    expect(response).to redirect_to(list_path(task.list_id))
     expect(Task.first.title).to eq("New Title")
     expect(Task.first.complete).to be_truthy
   end

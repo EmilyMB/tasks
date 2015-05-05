@@ -1,10 +1,8 @@
-<%= link_to "New List", new_list_path, class: "btn btn-default" %>
-
+<h3>Archived Lists</h3>
 <div class="active-lists">
-  <%= link_to "Archived Lists", archived_path, class:"btn btn-default" %>
   <% @lists.each do |list| %>
     <ul id="list-<%=list.id%>">
-      <h2><%= link_to list.title, list_path(list) %></h2>
+      <%= link_to list.title, list_path(list) %>
       <%= link_to "Update", edit_list_path(list), class: "btn btn-default"%>
       <% if list.archived %>
         <%= link_to "Delete", list, method: :delete, class: "btn btn-danger" %>
@@ -17,3 +15,4 @@
     </ul>
   <% end %>
 </div>
+<%= link_to "Active Lists", root_path, class:"btn btn-default" %>

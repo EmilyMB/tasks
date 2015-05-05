@@ -1,0 +1,10 @@
+<%= form_for @task do |f| %>
+  <%= f.label "Title" %>
+  <%= f.text_field :title %>
+  <%= f.label "Description" %>
+  <%= f.text_field :description %>
+  <%= f.label "Due date" %>
+  <%= f.date_field :due_date %>
+  <%= f.hidden_field :list_id, value: @task.list_id %>
+  <%= f.submit "Update"%>
+<% end %>
