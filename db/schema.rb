@@ -11,29 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505151531) do
+ActiveRecord::Schema.define(version: 20150505153130) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
-
-  create_table "degrees", force: :cascade do |t|
-    t.string   "school"
-    t.string   "level"
-    t.integer  "year"
-    t.string   "degree"
-    t.integer  "total"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "links", force: :cascade do |t|
-    t.string   "orig_url"
-    t.string   "short_url"
-    t.integer  "clicks"
-    t.string   "title"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "lists", force: :cascade do |t|
     t.string   "title"
@@ -50,14 +31,6 @@ ActiveRecord::Schema.define(version: 20150505151531) do
     t.integer  "list_id"
     t.datetime "created_at",                  null: false
     t.datetime "updated_at",                  null: false
-  end
-
-  create_table "urls", force: :cascade do |t|
-    t.string   "url"
-    t.string   "short_url"
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-    t.integer  "click_count", default: 0
   end
 
 end
