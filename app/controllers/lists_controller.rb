@@ -24,6 +24,12 @@ class ListsController < ApplicationController
     redirect_to list_path(id: params[:id])
   end
 
+  def destroy
+    List.find(params[:id]).delete
+
+    redirect_to lists_path
+  end
+
   private
 
   def list_params
