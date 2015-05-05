@@ -1,5 +1,8 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Task, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe "validations" do
+    it { should belong_to(:list) }
+    it { should validate_presence_of(:title) }
+  end
 end
