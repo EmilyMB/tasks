@@ -43,7 +43,7 @@ RSpec.describe ListsController, type: :controller do
     put :update, id: list.id, list: { title: "New Title", archived: true }
 
     expect(response).to have_http_status(:redirect)
-    expect(response).to redirect_to(assigns(:list))
+    expect(response).to redirect_to(lists_path)
     expect(List.first.title).to eq("New Title")
     expect(List.first.archived).to be_truthy
   end

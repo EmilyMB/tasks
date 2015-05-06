@@ -33,13 +33,17 @@ class ListsController < ApplicationController
     list = List.find(params[:id])
     list.update_attributes(list_params)
 
-    redirect_to list_path(id: params[:id])
+    if list.archived
+      redirect_to lists_path
+    else
+      redirect_to list_path(id: params[:id])
+    end
   end
 
   def destroy
     List.find(params[:id]).delete
 
-    redirect_to lists_path
+    redirect_to archived_path
   end
 
   def archived
