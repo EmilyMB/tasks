@@ -1,0 +1,21 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.btn {
+  font-size: 30px;
+  margin: 15px;
+}
+
+.btn-default {
+  background-color: green;
+  color: white;
+}
+
+.list {
+  background-color: #F2D3D9;
+  margin-left: 40px;
+  width: 40%;
+}
+tr {
+  font-size: 20px;
+}

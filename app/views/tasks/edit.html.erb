@@ -1,0 +1,16 @@
+<%= form_for @task do |f| %>
+  <%= f.label "Title" %>
+  <%= f.text_field :title %>
+  <%= f.label "Description" %>
+  <%= f.text_field :description %>
+  <%= f.label "Due date" %>
+  <%= f.date_field :due_date %></br>
+
+  <%= f.hidden_field :list_id, value: @task.list_id %>
+  <%= f.file_field :file %>
+  <%= f.submit "Update", class: "btn btn-default"%>
+<% end %>
+<% if @task.file.url.present? %>
+  <%= link_to "Current file", @task.file.url %>
+  <%= link_to "Delete file", remove_file_path({id: @task.id}), method: :put, class: "btn btn-danger" %>
+<% end %>

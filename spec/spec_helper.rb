@@ -1,7 +1,11 @@
 require "factory_girl_rails"
 require "support/factory_girl"
+require "capybara/rspec"
 require "simplecov"
-SimpleCov.start
+SimpleCov.start do
+  add_filter "/config/"
+  add_filter "/spec/"
+end
 
 RSpec.configure do |config|
   # rspec-expectations config goes here. You can use an alternate

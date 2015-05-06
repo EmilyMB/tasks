@@ -1,5 +1,5 @@
 <h3><%= @list.title %></h3>
-<p><label>Search tasks: <input type="text" id="title-box" value=""></p>
+<p><label>Search tasks: <input type="text" id="title-box" value=""></label></p>
 <table class="table table-resposive table-striped">
   <thead>
     <tr class="head">
@@ -7,7 +7,7 @@
       <td>Description</td>
       <td><%= sortable "due_date", "Due Date" %></td>
       <td><%= sortable "complete", "Completed?" %></td>
-      <td>Mark Complete</td>
+      <td>Mark Incomplete</td>
       <td>Update</td>
     </tr>
   </thead>
@@ -17,11 +17,10 @@
     <td><%= task.description %></td>
     <td><%= task.due_date %></td>
     <td><%= task.complete %></td>
-    <td><button class="mark-complete btn btn-default">Mark Complete</button></td>
+    <td><button class="mark-incomplete btn btn-danger">Mark Incomplete</button></td>
     <td><%= link_to "Update", edit_task_path(task), class: "btn btn-default"%></td>
   </tr>
   <% end %>
 </table>
 
-<%= link_to "Add new task", new_task_path(list_id: @list.id), class: "btn btn-default" %>
-<%= link_to "Completed Tasks", complete_path(@list.id), class:"btn btn-default" %>
+<%= link_to "Tasks in Progress", list_path(@list.id), class:"btn btn-default" %>

@@ -1,7 +1,5 @@
-<%= link_to "New List", new_list_path, class: "btn btn-default" %>
-<%= link_to "Archived Lists", archived_path, class:"btn btn-default" %>
-
-<h2>Active Lists</h2>
+<h2>Archived Lists</h2>
+<%= link_to "Active Lists", root_path, class:"btn btn-default" %>
 <div class="active-lists">
   <% @lists.each do |list| %>
     <div class="list">
