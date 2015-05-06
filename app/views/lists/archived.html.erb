@@ -2,17 +2,19 @@
 <%= link_to "Active Lists", root_path, class:"btn btn-default" %>
 <div class="active-lists">
   <% @lists.each do |list| %>
-    <ul id="list-<%=list.id%>">
-      <%= link_to list.title, list_path(list) %>
-      <%= link_to "Update", edit_list_path(list), class: "btn btn-default"%>
-      <% if list.archived %>
-        <%= link_to "Delete", list, method: :delete, class: "btn btn-danger" %>
-      <% else %>
-        <%= link_to "Archive", list_path(id: list.id, list: { archived: true }), method: :put, class: "btn btn-danger" %>
-      <% end %>
-      <% list.tasks.each do |task| %>
-        <li><%= task.title %></li>
-      <% end %>
-    </ul>
+    <div class="list">
+      <ul id="list-<%=list.id%>">
+        <h2><%= link_to list.title, list_path(list) %></h2>
+        <%= link_to "Update", edit_list_path(list), class: "btn btn-default"%>
+        <% if list.archived %>
+          <%= link_to "Delete", list, method: :delete, class: "btn btn-danger" %>
+        <% else %>
+          <%= link_to "Archive", list_path(id: list.id, list: { archived: true }), method: :put, class: "btn btn-danger" %>
+        <% end %>
+        <% list.tasks.each do |task| %>
+          <li><%= task.title %></li>
+        <% end %>
+      </ul>
+    </div>
   <% end %>
 </div>

@@ -26,12 +26,32 @@ RSpec.describe TasksController, type: :controller do
 
   it "PUT #update" do
     task = create(:task)
+    @file = fixture_file_upload('files/panda.jpg', 'image/jpeg')
 
-    put :update, id: task.id, task: { title: "New Title", complete: true }
+    put :update, id: task.id, task: { title: "New Title", complete: true, file: @file }
 
     expect(response).to have_http_status(:redirect)
     expect(response).to redirect_to(list_path(task.list_id))
     expect(Task.first.title).to eq("New Title")
+    expect(Task.first.complete).to be_truthy
+  end
+
+  it "PUT #remove_file" do
+    task = create(:task)
+    put :update, id: task.id, task: { file: @file }
+
+    put :remove_file, id: task.id
+
+    expect(response).to have_http_status(:redirect)
+    expect(task.file.url).to eq("")
+  end
+
+  it "GET #change_status" do
+    task = create(:task)
+
+    get :change_status, id: task.id, task: { complete: true }
+
+    expect(response).to have_http_status(:redirect)
     expect(Task.first.complete).to be_truthy
   end
 end

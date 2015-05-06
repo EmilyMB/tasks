@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150505163732) do
+ActiveRecord::Schema.define(version: 20150506025654) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,12 +25,16 @@ ActiveRecord::Schema.define(version: 20150505163732) do
 
   create_table "tasks", force: :cascade do |t|
     t.string   "title"
-    t.boolean  "complete",    default: false
+    t.boolean  "complete",          default: false
     t.string   "description"
     t.date     "due_date"
     t.integer  "list_id"
-    t.datetime "created_at",                  null: false
-    t.datetime "updated_at",                  null: false
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+    t.string   "file_file_name"
+    t.string   "file_content_type"
+    t.integer  "file_file_size"
+    t.datetime "file_updated_at"
   end
 
 end

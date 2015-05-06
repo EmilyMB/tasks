@@ -9,6 +9,7 @@ gem "jbuilder", "~> 2.0"
 gem "sdoc", "~> 0.4.0", group: :doc
 gem "twitter-bootstrap-rails"
 gem "bootstrap-sass"
+gem "paperclip", "~> 4.2"
 
 group :development, :test do
   gem "pry"
@@ -22,4 +23,5 @@ group :test do
   gem "factory_girl_rails", "~> 4.0"
   gem "simplecov", :require => false
   gem "capybara"
+  gem "launchy"
 end

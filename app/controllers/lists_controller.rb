@@ -1,13 +1,18 @@
 class ListsController < ApplicationController
   helper_method :sort_column, :sort_direction
-  
+
   def index
     @lists = List.where(archived: false)
   end
 
   def show
-    @list = List.where(id: params[:id]).first
-    @tasks = @list.tasks.order(sort_column + " " + sort_direction)
+    @list = List.find(params[:id])
+    @tasks = @list.tasks.where(complete: false).order(sort_column + " " + sort_direction)
+  end
+
+  def complete
+    @list = List.find(params[:id])
+    @tasks = @list.tasks.where(complete: true).order(sort_column + " " + sort_direction)
   end
 
   def new
@@ -46,8 +51,6 @@ class ListsController < ApplicationController
   def list_params
     params.require(:list).permit(:title, :archived)
   end
-
-
 
   def sort_column
     Task.column_names.include?(params[:sort]) ? params[:sort] : "title"

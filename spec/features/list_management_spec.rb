@@ -1,15 +1,6 @@
 require "rails_helper"
 
 RSpec.feature "ListManagement", type: :feature do
-  scenario "User creates a new list" do
-    visit "/lists/new"
-
-    fill_in "list[title]", with: "My new list"
-    click_button "Create"
-
-    expect(page).to have_text("My new list")
-  end
-
   scenario "User visits home page" do
     list1 = create(:list, title: "I'm the first")
     list2 = create(:list, title: "Second")
@@ -34,5 +25,14 @@ RSpec.feature "ListManagement", type: :feature do
     click_link_or_button("New")
 
     expect(current_path).to eq(new_list_path)
+  end
+
+  scenario "User creates a new list" do
+    visit "/lists/new"
+
+    fill_in "list[title]", with: "My new list"
+    click_button "Create"
+
+    expect(page).to have_text("My new list")
   end
 end

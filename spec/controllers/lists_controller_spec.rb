@@ -57,4 +57,16 @@ RSpec.describe ListsController, type: :controller do
     expect(response.body).not_to include("Deleteme list")
     expect(List.count).to eq(0)
   end
+
+  it "GET #complete assigns @tasks" do
+    list = create(:list)
+    task_in_progress = create(:task, list_id: list.id, title: "fun")
+    task_complete = create(:task, list_id: list.id, complete: true, title: "good")
+    list.tasks << [task_in_progress, task_complete]
+
+    get :complete, id: list.id
+
+    expect(response).to have_http_status(:success)
+    expect(assigns[:tasks]).to eq([task_complete])
+  end
 end
